@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'core/di/service_lactor.dart';
+import 'feature/presentation/view/screens/product_screen.dart';
+
 void main() {
+  setUp();
   runApp(const ElevateTask());
 }
 
@@ -9,6 +13,9 @@ class ElevateTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ProductScreen()
+    );
   }
 }
