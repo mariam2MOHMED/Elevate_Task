@@ -1,4 +1,5 @@
 import 'package:elevatetask/core/di/service_lactor.dart';
+import 'package:elevatetask/core/utils/app_colors.dart';
 import 'package:elevatetask/feature/data/repos/product_repo_impl.dart';
 import 'package:elevatetask/feature/presentation/view/widget/product_item.dart';
 import 'package:elevatetask/feature/presentation/view_model/cubit/product_cubit.dart';
@@ -13,12 +14,12 @@ class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubit
-        (getit.get<ProductRepoImpl>())..getProducts(),
+      create: (context) => GetProductCubit
+        (getit.get<GetProductRepoImpl>())..getProducts(),
       child: Scaffold(
       body: Padding(
       padding: EdgeInsets.all(15.0),
-    child: BlocBuilder<ProductCubit,ProductState>(
+    child: BlocBuilder<GetProductCubit,ProductState>(
       builder: (context,state) {
       if(state is ProductSucess){
         return GridView.builder(
@@ -35,7 +36,12 @@ class ProductScreen extends StatelessWidget {
             });
       }else if(state is ProductError){
         return ErrorToGetWidget();
-      }else{
+      }else if(state is ProductLoading){
+        return Center(child: CircularProgressIndicator(
+          color: AppColors.primary,
+        ));
+      }
+      else{
         return Center();
       }
       }

@@ -8,10 +8,10 @@ import 'package:elevatetask/feature/data/repos/product_repo_impl.dart';
 
 import '../models/product_model.dart';
 
-class ProductRepoImpl extends ProductRepo {
+class GetProductRepoImpl extends GetProductRepo {
    final ApiServices apiServices;
 
-  ProductRepoImpl({required this.apiServices});
+  GetProductRepoImpl({required this.apiServices});
   @override
   Future<Either<Failure, List<ProductModel>>> getProducts() async {
   try{

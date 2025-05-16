@@ -5,10 +5,10 @@ import '../../../data/models/product_model.dart';
 import 'package:elevatetask/feature/data/repos/product_repo_impl.dart';
 part 'product_state.dart';
 
-class ProductCubit extends Cubit<ProductState> {
-  ProductCubit(this.productRepoImpl) :
+class GetProductCubit extends Cubit<ProductState> {
+  GetProductCubit(this.productRepoImpl) :
         super(ProductInitial());
-  final ProductRepoImpl productRepoImpl;
+  final GetProductRepoImpl productRepoImpl;
 Future<void> getProducts()async{
   emit(ProductLoading());
   final result=await productRepoImpl.getProducts();
