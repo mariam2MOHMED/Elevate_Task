@@ -21,8 +21,7 @@ class GetProductRepoImpl extends GetProductRepo {
 
  for (var item in data) {
    print('Parsing item: $item');
-   products.add(ProductModel.fromJson
-     (item ));
+   products.add(ProductModel.fromJson(item ));
  }
 return right(products);
   }catch(error){
